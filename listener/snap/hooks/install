@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+mkdir -p ${SNAP_COMMON}/robot-config/
+cp ${SNAP}/usr/share/robot-config/listener.yaml ${SNAP_COMMON}/robot-config/

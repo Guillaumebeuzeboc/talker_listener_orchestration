@@ -1,0 +1,2 @@
+#!/bin/sh -e
+ros2 service call /good_bye std_srvs/srv/Empty {}

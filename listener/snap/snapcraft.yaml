@@ -1,0 +1,48 @@
+name: gbeuzeboc-listener
+version: '0.1'
+summary: Basic ROS2 listener
+description: |
+  Basic ROS2 listener based on core20
+
+grade: stable
+confinement: strict
+base: core20
+
+parts:
+  gbeuzeboc-listener:
+    plugin: colcon
+    source: .
+    stage-packages: [ros-foxy-ros2launch, ros-foxy-ros2service, ros-foxy-ros2run]
+    stage-snaps: [gbeuzeboc-talker]
+  
+  config:
+    plugin: dump
+    source: config/
+    organize:
+      '*': usr/share/robot-config/
+
+apps:
+  gbeuzeboc-talker-listener-daemon:
+    daemon: simple
+    command: opt/ros/foxy/bin/ros2 launch listener talker_listener.launch.py
+    stop-command: opt/ros/snap/lib/listener/good_bye_service
+    plugs: [network, network-bind, camera]
+    extensions: [ros2-foxy]
+    environment:
+      "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack"
+
+  # gbeuzeboc-talker:
+  #   daemon: simple
+  #   install-mode: disable
+  #   command: opt/ros/foxy/bin/ros2 run talker talker
+    
+  #   plugs: [network, network-bind]
+  #   extensions: [ros2-foxy]
+
+  # gbeuzeboc-talker-listener:
+  #   daemon: simple
+  #   install-mode: disable
+  #   before: [gbeuzeboc-talker]
+  #   command: opt/ros/foxy/bin/ros2 run listener listener
+  #   plugs: [network, network-bind]
+  #   extensions: [ros2-foxy]

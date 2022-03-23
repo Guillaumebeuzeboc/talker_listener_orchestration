@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+FILE=${SNAP_COMMON}/robot-config/listener.yaml
+
+# copy the file if it doesn't exist
+if [ ! -f "$FILE" ]; then
+    mkdir -p ${SNAP_COMMON}/robot-config/
+    cp ${SNAP}/usr/share/robot-config/listener.yaml $FILE
+fi

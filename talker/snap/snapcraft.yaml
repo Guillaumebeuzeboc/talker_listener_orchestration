@@ -1,0 +1,22 @@
+name: gbeuzeboc-talker
+version: '0.1'
+summary: Basic ROS2 talker
+description: |
+  Basic ROS2 talker based on core20
+
+grade: stable
+confinement: strict
+base: core20
+
+parts:
+  gbeuzeboc-talker:
+    plugin: colcon
+    source: .
+    stage-packages: [ros-foxy-ros2launch]
+
+apps:
+  gbeuzeboc-talker:
+    command: opt/ros/foxy/bin/ros2 launch talker talker.launch.py
+    plugs: [network, network-bind]
+    extensions: [ros2-foxy]
+
