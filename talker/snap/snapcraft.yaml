@@ -8,6 +8,13 @@ grade: stable
 confinement: strict
 base: core20
 
+slots:
+  gbeuzeboc-talker:
+    interface: content
+    source:
+      read:
+        - $SNAP/opt/ros/snap
+
 parts:
   gbeuzeboc-talker:
     plugin: colcon

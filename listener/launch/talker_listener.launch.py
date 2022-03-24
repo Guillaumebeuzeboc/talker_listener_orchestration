@@ -11,6 +11,9 @@ def generate_launch_description():
 
     ld = LaunchDescription()
 
+    print('======================')
+    print(os.environ['AMENT_PREFIX_PATH'])
+
     default_config_file : str
 
     if "SNAP_COMMON" in os.environ:
