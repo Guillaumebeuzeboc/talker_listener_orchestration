@@ -25,6 +25,7 @@ install(TARGETS listener DESTINATION lib/${PROJECT_NAME})
 
 install(FILES
           scripts/good_bye_service
+          scripts/ros_doctor
         DESTINATION lib/${PROJECT_NAME}
         PERMISSIONS
           OWNER_EXECUTE OWNER_WRITE OWNER_READ

@@ -18,7 +18,7 @@ parts:
   gbeuzeboc-listener:
     plugin: colcon
     source: .
-    stage-packages: [ros-foxy-ros2launch, ros-foxy-ros2service, ros-foxy-ros2run]
+    stage-packages: [ros-foxy-ros2launch, ros-foxy-ros2service, ros-foxy-ros2run, ros-foxy-ros2doctor]
   
   config:
     plugin: dump
@@ -28,7 +28,9 @@ parts:
 
 apps:
   gbeuzeboc-talker-listener-daemon:
+    daemon: simple
     command: opt/ros/foxy/bin/ros2 launch listener talker_listener.launch.py
+    post-stop-command: opt/ros/snap/lib/listener/ros_doctor
     plugs: [network, network-bind]
     extensions: [ros2-foxy]
     environment:
