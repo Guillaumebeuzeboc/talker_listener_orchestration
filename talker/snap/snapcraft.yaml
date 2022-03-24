@@ -11,6 +11,7 @@ base: core20
 slots:
   gbeuzeboc-talker:
     interface: content
+    allow-auto-connection: true
     source:
       read:
         - $SNAP/opt/ros/snap

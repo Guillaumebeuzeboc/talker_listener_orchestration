@@ -12,6 +12,7 @@ plugs:
   gbeuzeboc-talker:
     interface: content
     target: $SNAP/gbeuzeboc-talker
+    default-provider: gbeuzeboc-talker
 
 parts:
   gbeuzeboc-listener:
